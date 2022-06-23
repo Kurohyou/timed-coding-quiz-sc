@@ -8,9 +8,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-<a href="https://github.com/Kurohyou/timed-coding-quiz-sc">
-<img src="images/logo.png" alt="Logo" width="80" height="80">
-</a>
 <h3 align="center">Coding Quizzer</h3>
 <p align="center">
 A timed HTML coding quiz site with local storage of Scores and Times
