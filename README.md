@@ -18,7 +18,7 @@ A timed HTML coding quiz site with local storage of Scores and Times
 <a href="https://github.com/Kurohyou/timed-coding-quiz-sc"><strong>Explore the docs »</strong></a>
 <br/>
 <br/>
-<a href="https://github.com/Kurohyou/timed-coding-quiz-sc">View Demo</a>
+<a href="https://kurohyou.github.io/timed-coding-quiz-sc/">View Site</a>
 ·
 <a href="https://github.com/Kurohyou/timed-coding-quiz-sc/issues">Report Bug</a>
 ·
@@ -43,7 +43,7 @@ A timed HTML coding quiz site with local storage of Scores and Times
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-[![Product Name Screen Shot][product-screenshot]]
+![Product Name Screen Shot][product-screenshot]
 This coding quiz challenges users to beat their high scores with a variety of questions about HTML, CSS, and JS.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -55,12 +55,12 @@ This coding quiz challenges users to beat their high scores with a variety of qu
 <!-- GETTING STARTED -->
 
 ## Getting Started
-To test yourself, simply access the [deployed site]().
+To test yourself, simply access the [deployed site](https://kurohyou.github.io/timed-coding-quiz-sc/).
 <p align="right">(<a href="#top">back to top</a>)</p>
 <!-- USAGE EXAMPLES -->
 
 ## Contact
-Scott Casey - [@your_twitter](https://twitter.com/Kurohyou) - scaseydv@gmail.com
+Scott Casey - [@Kurohyou-Studios](https://twitter.com/Kurohyou-Studios) - scaseydv@gmail.com
 Project Link: [https://github.com/Kurohyou/timed-coding-quiz-sc](https://github.com/Kurohyou/timed-coding-quiz-sc)
 <p align="right">(<a href="#top">back to top</a>)</p>
 <!-- ACKNOWLEDGMENTS -->
@@ -81,4 +81,4 @@ Project Link: [https://github.com/Kurohyou/timed-coding-quiz-sc](https://github.
 [linkedin-url]: https://linkedin.com/in/Kurohyou
 [patreon-shield]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Dkurohyoustudios%26type%3Dpatrons&style=flat
 [patreon-url]: https://patreon.com/kurohyoustudios
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: assets/images/preview.png
