@@ -127,10 +127,12 @@ const clearQuestion = () => {
  * resets the quiz interface to the initial state
  */
 const resetQuiz = () => {
-  document.querySelector('#quiz-interface > span')
-    .replaceChildren('Click below to start the quiz. You will have 1 minute to complete the quiz. Wrong answers will deduct 5 seconds from the timer.');
-  document.getElementById('continue')
-    .replaceChildren('Take the Quiz!');
+  console.log('resetting quiz');
+  const noticeSpan = document.querySelector('#quiz-interface > span')
+  noticeSpan.replaceChildren('Click below to start the quiz. You will have 1 minute to complete the quiz. Wrong answers will deduct 5 seconds from the timer.');
+  contButton.replaceChildren('Take the Quiz!');
+  const optionDiv = document.getElementById('options');
+  optionDiv.replaceChildren();
   //Initialize the clickFunction to the startQuiz function
   quiz.clickFunction = startQuiz;
   contButton.removeAttribute('disabled');
@@ -228,7 +230,7 @@ const updateLeaderBoard = ()=>{
   const aside = document.getElementById('leaderboard');
   leaderBoard.sort((a,b) => b.score - a.score );
   const ol = document.querySelector('#leaderboard > ol');
-  console.log(ol);
+  ol.replaceChildren();
   leaderBoard.forEach(obj => {
     const li = document.createElement('li');
     const flexSpan = document.createElement('span');
