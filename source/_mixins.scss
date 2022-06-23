@@ -1,0 +1,120 @@
+%sectionPadding{
+  padding: 2%;
+}
+%flex{
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--half-gap);
+  align-items:center;
+}
+%sectionArrange{
+  > *{
+    padding-top:var(--half-gap);
+  }
+  > .sectionHeader{
+    grid-column:1;
+    margin-top:0;
+  }
+  > :not(.sectionHeader){
+    grid-column:2;
+  }
+  > h3{
+    justify-self:end;
+    text-align:right;
+  }
+  &:not(:first-child){
+    > :is(.h2,h2),
+    > :is(.h2,h2) + :not(.sectionHeader){
+      border-top:5px solid black;
+    }
+  }
+}
+%shadowHover{
+  --dropShadow: drop-shadow(rgba(0, 0, 0, 0.19) 0px 10px 20px) drop-shadow(rgba(0, 0, 0, 0.23) 0px 6px 6px);
+  z-index:10;
+  --textBackColor:hsla(188, 100%, 15%,1);
+  transform:scale(1.02);
+}
+
+%cutButtonHover{
+  color:white;
+  &::after{
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%);
+    
+    clip-path: polygon(
+      // top left 1
+      calc(100% - var(--border-width))
+        calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5)),
+      // top left 2
+      calc(100% - var(--border-width)) var(--border-width),
+      // top right
+      calc(100% - var(--border-width)) var(--border-width),
+      //bottom right - 1
+      calc(100% - var(--border-width))
+        calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5)),
+      // bottom right - 2
+      calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5))
+        calc(100% - var(--border-width)),
+      // bottom left
+      calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5))
+        calc(100% - var(--border-width))
+    );
+  }
+}
+
+%cutButton{
+
+  cursor: pointer;
+  background: var(--background-color);
+  padding: 0.5em 1.5em;
+  border: 0;
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  place-content: center;
+  clip-path: polygon(
+    var(--edge-size) 0%,
+    100% 0,
+    100% calc(100% - var(--edge-size)),
+    calc(100% - var(--edge-size)) 100%,
+    0 100%,
+    0% var(--edge-size)
+  );
+  transition: color 250ms;
+  &::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--border-color);
+    z-index: -2;
+  }
+  
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--background-color);
+    z-index: -1;
+    clip-path: polygon(
+      // top left 1
+      var(--border-width) calc(var(--edge-size) + var(--border-width) * 0.5),
+      // top left 2
+      calc(var(--edge-size) + var(--border-width) * 0.5) var(--border-width),
+      // top right
+      calc(100% - var(--border-width)) var(--border-width),
+      //bottom right - 1
+      calc(100% - var(--border-width))
+        calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5)),
+      // bottom right - 2
+      calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5))
+        calc(100% - var(--border-width)),
+      // bottom left
+      calc(var(--border-width)) calc(100% - var(--border-width))
+    );
+    transition: clip-path 500ms;
+  }
+  
+  &:hover {
+    @extend %cutButtonHover;
+  }
+}

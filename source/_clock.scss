@@ -1,0 +1,44 @@
+//  Adapted from CSS Pie charts: https://www.freecodecamp.org/news/css-only-pie-chart/. 
+//  This version is from my Under the Neighborhood sheet, adapted for js instead of pug: https://github.com/Roll20/roll20-character-sheets/tree/655878380fd6b5bfeb37d0b9de065de68b11f9de/under_the_neighborhood
+.clock-container{
+  grid-area:clock;
+  --circleSize:2.5rem;
+  display:inline-grid;
+  grid-template-areas:'content';
+  place-content:start;
+  grid-template-columns:var(--circleSize);
+  grid-template-rows:var(--circleSize);
+  // a comment
+  > *{
+    grid-area:content;
+  }
+}
+#clock{
+  --used:0;
+  --max:60;
+  --itemDeg:calc(var(--used) / var(--max) * 360deg);
+  --selectedColor:blue;
+  --trackSize:0.5rem;
+  box-sizing:border-box;
+  grid-area:'content';
+  border-radius:50%;
+  width:  var(--circleSize);
+  height: var(--circleSize);
+  display:grid;
+  grid-template-areas:'content';
+  background: conic-gradient(var(--selectedColor) var(--itemDeg),transparent var(--itemDeg));
+
+  &:before{
+    content:'';
+    box-sizing:border-box;
+    width:calc(100% - var(--trackSize));
+    height:calc(100% - var(--trackSize));
+    place-self:center;
+    border-radius:50%;
+    background-color:var(--backColor);
+  }
+}
+#clock-span{
+  place-self:center;
+  font-size:0.8rem;
+}

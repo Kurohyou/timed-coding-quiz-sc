@@ -1,0 +1,27 @@
+include ../assets/pug/_kurohyoustudios.pug
+doctype html
+html(lang="en")
+  +kurohyouHead('Code Quiz!')
+  body
+    nav
+      a(href="#leaderboard").text-link Leaderboard
+    .clock-container(style="display:none;")
+      #clock
+      span#clock-span
+    main
+      header
+        h1 Kurohyou's Code Quiz
+      section(aria-label="quiz prompts")#quiz-interface
+        span Click below to start the quiz. You will have 1 minute to complete the quiz. Wrong answers will deduct 5 seconds from the timer.
+        #options
+        span#result
+        button(disabled).button.button--start#continue Loading Quiz
+    aside#leaderboard
+      h2 Leaderboard
+      a(href="#").close.text-link.material-icons close
+      ol
+      //- Will eventually contain leaderboard info
+    // Allows parsing of csv file to JSON
+    script(src="assets/javascript/papaparse.min.js")
+    // Quiz javascript
+    script(src="assets/javascript/quiz.js")

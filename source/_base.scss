@@ -1,0 +1,192 @@
+@use '_mixins';
+:root{
+  --baseCardSize:200px;
+  --gap:1rem;
+  --big-gap:calc(var(--gap) * 2);
+  --half-gap:calc(var(--gap) / 2);
+  --tiny-gap:calc(var(--gap) / 4);
+  --typeHue:240;
+  --typeLightness:50%;
+  --typeSaturation:100%;
+  --typeOpacity:1;
+  --typeBackLightness:67%;
+  --typeBackOpacity:0.25;
+
+  --borderRadius: 20px;
+
+  --backColor:white;
+
+  //Colors
+    //Header/Footer
+    --hfBackground:#00434e;
+
+  //Cut Button Variables
+    --background-color: white;
+    --border-color: radial-gradient(ellipse, hsl(172deg 100% 25%),hsl(172deg 100% 12%));
+    --border-width: 0.1em;
+    --edge-size: 1em;
+
+  font-size:16px;
+  font-family:"Exo 2";
+}
+button{
+  cursor: pointer;
+}
+header{
+  display:grid;
+  grid-template-columns:1fr auto;
+  grid-template-rows:auto auto;
+  grid-template-areas:
+    'head clock'
+    'nav nav';
+}
+h1{
+  grid-area:head;
+  text-align: center;
+  font-family:Aldrich;
+}
+h2{
+  font-family:Aldrich;
+}
+nav{
+  grid-area:nav;
+  padding:3%;
+}
+.clock-container,nav{
+  padding:var(--gap) var(--gap) 0;
+}
+body{
+  display:grid;
+  grid-template-columns:[content-start nav-start aside-start] 220px [aside-end] 1fr [nav-end clock-start] auto [clock-end content-end];
+  grid-template-rows:[nav-start aside-start clock-start] auto [nav-end clock-end content-start] 1fr [content-end aside-end];
+  height:100vh;
+  box-sizing:border-box;
+  margin:0;
+}
+main{
+  @extend %sectionPadding;
+  border-radius: var(--borderRadius);
+  grid-area:content;
+  display:grid;
+  grid-template-rows:auto 1fr;
+  place-self: center;
+  width: 700px;
+  box-shadow: rgb(0 0 0 / 12%) 0px 1px 3px, rgb(0 0 0 / 24%) 0px 1px 2px;
+  aspect-ratio: 2 / 1;
+  max-height: 90vh;
+  max-width: 90vw;
+}
+aside{
+  @extend %sectionPadding;
+  --listPad:40px;
+  border-radius: 0 0 var(--borderRadius) 0;
+  padding:3%;
+  background-color:white;
+  grid-area:aside;
+  opacity:0;
+  transition:opacity 500ms;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "head close"
+    "list list";
+  align-self: start;
+  align-items: center;
+  //#31 from https://getcssscan.com/css-box-shadow-examples
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  visibility:hidden;
+  &:target{
+    opacity:1;
+    visibility: visible;
+  }
+  > ol{
+    grid-area:list;
+    padding-left:var(--listPad);
+    li > span{
+      display:flex;
+      gap:var(--gap);
+      justify-content: space-between;
+    }
+  }
+}
+input[name="answer_option"]{
+  display:none;
+  + label{
+    @extend %cutButton;
+  }
+  &:checked + label{
+    @extend %cutButtonHover;
+  }
+}
+.text-link{
+  text-decoration: none;
+  color:black;
+  transition:color 500ms;
+  &:hover{
+    color:hsl(0,0,25);
+  }
+}
+.close:hover{
+  color:red;
+}
+#quiz-interface{
+  display:grid;
+  grid-template-rows:auto 1fr repeat(2,auto);
+  place-items:center;
+  gap:var(--half-gap);
+  > * {
+    font-family:"Exo 2";
+    line-height:1.5;
+  }
+  > span:first-child{
+    max-width:500px;
+  }
+}
+#options{
+  display:grid;
+  place-content:center;
+  gap:var(--half-gap);
+  grid-template-columns: minmax(40px,auto);
+}
+#result{
+  --hue:120;
+  --saturation:100%;
+  --lightness:25%;
+  --colorOpacity:0.2;
+  opacity:0;
+  transition: opacity 500ms;
+  text-transform:capitalize;
+  border: {
+    top:2px solid;
+    bottom:2px solid;
+  }
+  color:hsl(var(--hue), var(--saturation), var(--lightness));
+  transform: skew(-20deg);
+  font-weight: 700;
+  background-color:hsla(var(--hue), var(--saturation), var(--lightness),var(--colorOpacity));
+  place-self:stretch;
+  text-align:center;
+  &.show{
+    opacity:1;
+  }
+  &.incorrect{
+    --hue:0;
+    --saturation:100%;
+    --lightness:50%;
+  }
+}
+
+//Button code adapted from Kevin Powell https://www.youtube.com/watch?v=aW6qEAQSctY&t=1098s
+
+button {
+  @extend %cutButton;
+}
+pre{
+  --hue:0;
+  --saturation:100%;
+  --lightness:50%;
+  color:hsl(var(--hue),var(--saturation),var(--lightness));
+  background-color:hsl(var(--hue),var(--saturation),90%);
+  display:inline;
+  padding-inline:0.2em;
+}

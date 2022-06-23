@@ -1,0 +1,885 @@
+main, aside {
+  padding: 2%;
+}
+
+input[name=answer_option]:checked + label, input[name=answer_option] + label:hover, button:hover {
+  color: white;
+}
+input[name=answer_option]:checked + label::after, input[name=answer_option] + label:hover::after, button:hover::after {
+  -webkit-clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%);
+          clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%);
+  -webkit-clip-path: polygon(calc(100% - var(--border-width)) calc(100% - (var(--edge-size) + var(--border-width) * 0.5)), calc(100% - var(--border-width)) var(--border-width), calc(100% - var(--border-width)) var(--border-width), calc(100% - var(--border-width)) calc(100% - (var(--edge-size) + var(--border-width) * 0.5)), calc(100% - (var(--edge-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)), calc(100% - (var(--edge-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)));
+          clip-path: polygon(calc(100% - var(--border-width)) calc(100% - (var(--edge-size) + var(--border-width) * 0.5)), calc(100% - var(--border-width)) var(--border-width), calc(100% - var(--border-width)) var(--border-width), calc(100% - var(--border-width)) calc(100% - (var(--edge-size) + var(--border-width) * 0.5)), calc(100% - (var(--edge-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)), calc(100% - (var(--edge-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)));
+}
+
+input[name=answer_option] + label, button {
+  cursor: pointer;
+  background: var(--background-color);
+  padding: 0.5em 1.5em;
+  border: 0;
+  position: relative;
+  isolation: isolate;
+  display: -ms-inline-grid;
+  display: inline-grid;
+  place-content: center;
+  -webkit-clip-path: polygon(var(--edge-size) 0%, 100% 0, 100% calc(100% - var(--edge-size)), calc(100% - var(--edge-size)) 100%, 0 100%, 0% var(--edge-size));
+          clip-path: polygon(var(--edge-size) 0%, 100% 0, 100% calc(100% - var(--edge-size)), calc(100% - var(--edge-size)) 100%, 0 100%, 0% var(--edge-size));
+  -webkit-transition: color 250ms;
+  transition: color 250ms;
+}
+input[name=answer_option] + label::before, button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--border-color);
+  z-index: -2;
+}
+input[name=answer_option] + label::after, button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--background-color);
+  z-index: -1;
+  -webkit-clip-path: polygon(var(--border-width) calc(var(--edge-size) + var(--border-width) * 0.5), calc(var(--edge-size) + var(--border-width) * 0.5) var(--border-width), calc(100% - var(--border-width)) var(--border-width), calc(100% - var(--border-width)) calc(100% - (var(--edge-size) + var(--border-width) * 0.5)), calc(100% - (var(--edge-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)), calc(var(--border-width)) calc(100% - var(--border-width)));
+          clip-path: polygon(var(--border-width) calc(var(--edge-size) + var(--border-width) * 0.5), calc(var(--edge-size) + var(--border-width) * 0.5) var(--border-width), calc(100% - var(--border-width)) var(--border-width), calc(100% - var(--border-width)) calc(100% - (var(--edge-size) + var(--border-width) * 0.5)), calc(100% - (var(--edge-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)), calc(var(--border-width)) calc(100% - var(--border-width)));
+  -webkit-transition: -webkit-clip-path 500ms;
+  transition: -webkit-clip-path 500ms;
+  transition: clip-path 500ms;
+  transition: clip-path 500ms, -webkit-clip-path 500ms;
+}
+:root {
+  --baseCardSize:200px;
+  --gap:1rem;
+  --big-gap:calc(var(--gap) * 2);
+  --half-gap:calc(var(--gap) / 2);
+  --tiny-gap:calc(var(--gap) / 4);
+  --typeHue:240;
+  --typeLightness:50%;
+  --typeSaturation:100%;
+  --typeOpacity:1;
+  --typeBackLightness:67%;
+  --typeBackOpacity:0.25;
+  --borderRadius: 20px;
+  --backColor:white;
+  --hfBackground:#00434e;
+  --background-color: white;
+  --border-color: radial-gradient(ellipse, hsl(172deg 100% 25%),hsl(172deg 100% 12%));
+  --border-width: 0.1em;
+  --edge-size: 1em;
+  font-size: 16px;
+  font-family: "Exo 2";
+}
+
+button {
+  cursor: pointer;
+}
+
+header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr auto;
+  grid-template-columns: 1fr auto;
+  -ms-grid-rows: auto auto;
+  grid-template-rows: auto auto;
+      grid-template-areas: "head clock" "nav nav";
+}
+
+h1 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: head;
+  text-align: center;
+  font-family: Aldrich;
+}
+
+aside > h1 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+h2 {
+  font-family: Aldrich;
+}
+
+nav {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: nav;
+  padding: 3%;
+}
+
+.clock-container, nav {
+  padding: var(--gap) var(--gap) 0;
+}
+
+body {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: [content-start nav-start aside-start] 220px [aside-end] 1fr [nav-end clock-start] auto [clock-end content-end];
+  grid-template-columns: [content-start nav-start aside-start] 220px [aside-end] 1fr [nav-end clock-start] auto [clock-end content-end];
+  -ms-grid-rows: [nav-start aside-start clock-start] auto [nav-end clock-end content-start] 1fr [content-end aside-end];
+  grid-template-rows: [nav-start aside-start clock-start] auto [nav-end clock-end content-start] 1fr [content-end aside-end];
+  height: 100vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+}
+
+body > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+body > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+}
+
+body > *:nth-child(3) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+
+body > *:nth-child(4) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+}
+
+body > *:nth-child(5) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+}
+
+body > *:nth-child(6) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 6;
+}
+
+body > *:nth-child(7) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 7;
+}
+
+body > *:nth-child(8) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 8;
+}
+
+body > *:nth-child(9) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 9;
+}
+
+body > *:nth-child(10) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 10;
+}
+
+body > *:nth-child(11) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 11;
+}
+
+body > *:nth-child(12) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+}
+
+body > *:nth-child(13) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+}
+
+body > *:nth-child(14) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+}
+
+body > *:nth-child(15) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 4;
+}
+
+body > *:nth-child(16) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 5;
+}
+
+body > *:nth-child(17) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 6;
+}
+
+body > *:nth-child(18) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 7;
+}
+
+body > *:nth-child(19) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 8;
+}
+
+body > *:nth-child(20) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 9;
+}
+
+body > *:nth-child(21) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 10;
+}
+
+body > *:nth-child(22) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 11;
+}
+
+body > *:nth-child(23) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+}
+
+body > *:nth-child(24) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+}
+
+body > *:nth-child(25) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+}
+
+body > *:nth-child(26) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 4;
+}
+
+body > *:nth-child(27) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 5;
+}
+
+body > *:nth-child(28) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 6;
+}
+
+body > *:nth-child(29) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 7;
+}
+
+body > *:nth-child(30) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 8;
+}
+
+body > *:nth-child(31) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 9;
+}
+
+body > *:nth-child(32) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 10;
+}
+
+body > *:nth-child(33) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 11;
+}
+
+body > *:nth-child(34) {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+}
+
+body > *:nth-child(35) {
+  -ms-grid-row: 4;
+  -ms-grid-column: 2;
+}
+
+body > *:nth-child(36) {
+  -ms-grid-row: 4;
+  -ms-grid-column: 3;
+}
+
+body > *:nth-child(37) {
+  -ms-grid-row: 4;
+  -ms-grid-column: 4;
+}
+
+body > *:nth-child(38) {
+  -ms-grid-row: 4;
+  -ms-grid-column: 5;
+}
+
+body > *:nth-child(39) {
+  -ms-grid-row: 4;
+  -ms-grid-column: 6;
+}
+
+body > *:nth-child(40) {
+  -ms-grid-row: 4;
+  -ms-grid-column: 7;
+}
+
+body > *:nth-child(41) {
+  -ms-grid-row: 4;
+  -ms-grid-column: 8;
+}
+
+body > *:nth-child(42) {
+  -ms-grid-row: 4;
+  -ms-grid-column: 9;
+}
+
+body > *:nth-child(43) {
+  -ms-grid-row: 4;
+  -ms-grid-column: 10;
+}
+
+body > *:nth-child(44) {
+  -ms-grid-row: 4;
+  -ms-grid-column: 11;
+}
+
+body > *:nth-child(45) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+}
+
+body > *:nth-child(46) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 2;
+}
+
+body > *:nth-child(47) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 3;
+}
+
+body > *:nth-child(48) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 4;
+}
+
+body > *:nth-child(49) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 5;
+}
+
+body > *:nth-child(50) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 6;
+}
+
+body > *:nth-child(51) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 7;
+}
+
+body > *:nth-child(52) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 8;
+}
+
+body > *:nth-child(53) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 9;
+}
+
+body > *:nth-child(54) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 10;
+}
+
+body > *:nth-child(55) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 11;
+}
+
+body > *:nth-child(56) {
+  -ms-grid-row: 6;
+  -ms-grid-column: 1;
+}
+
+body > *:nth-child(57) {
+  -ms-grid-row: 6;
+  -ms-grid-column: 2;
+}
+
+body > *:nth-child(58) {
+  -ms-grid-row: 6;
+  -ms-grid-column: 3;
+}
+
+body > *:nth-child(59) {
+  -ms-grid-row: 6;
+  -ms-grid-column: 4;
+}
+
+body > *:nth-child(60) {
+  -ms-grid-row: 6;
+  -ms-grid-column: 5;
+}
+
+body > *:nth-child(61) {
+  -ms-grid-row: 6;
+  -ms-grid-column: 6;
+}
+
+body > *:nth-child(62) {
+  -ms-grid-row: 6;
+  -ms-grid-column: 7;
+}
+
+body > *:nth-child(63) {
+  -ms-grid-row: 6;
+  -ms-grid-column: 8;
+}
+
+body > *:nth-child(64) {
+  -ms-grid-row: 6;
+  -ms-grid-column: 9;
+}
+
+body > *:nth-child(65) {
+  -ms-grid-row: 6;
+  -ms-grid-column: 10;
+}
+
+body > *:nth-child(66) {
+  -ms-grid-row: 6;
+  -ms-grid-column: 11;
+}
+
+body > *:nth-child(67) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 1;
+}
+
+body > *:nth-child(68) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 2;
+}
+
+body > *:nth-child(69) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 3;
+}
+
+body > *:nth-child(70) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 4;
+}
+
+body > *:nth-child(71) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 5;
+}
+
+body > *:nth-child(72) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 6;
+}
+
+body > *:nth-child(73) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 7;
+}
+
+body > *:nth-child(74) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 8;
+}
+
+body > *:nth-child(75) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 9;
+}
+
+body > *:nth-child(76) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 10;
+}
+
+body > *:nth-child(77) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 11;
+}
+
+body > *:nth-child(78) {
+  -ms-grid-row: 8;
+  -ms-grid-column: 1;
+}
+
+body > *:nth-child(79) {
+  -ms-grid-row: 8;
+  -ms-grid-column: 2;
+}
+
+body > *:nth-child(80) {
+  -ms-grid-row: 8;
+  -ms-grid-column: 3;
+}
+
+body > *:nth-child(81) {
+  -ms-grid-row: 8;
+  -ms-grid-column: 4;
+}
+
+body > *:nth-child(82) {
+  -ms-grid-row: 8;
+  -ms-grid-column: 5;
+}
+
+body > *:nth-child(83) {
+  -ms-grid-row: 8;
+  -ms-grid-column: 6;
+}
+
+body > *:nth-child(84) {
+  -ms-grid-row: 8;
+  -ms-grid-column: 7;
+}
+
+body > *:nth-child(85) {
+  -ms-grid-row: 8;
+  -ms-grid-column: 8;
+}
+
+body > *:nth-child(86) {
+  -ms-grid-row: 8;
+  -ms-grid-column: 9;
+}
+
+body > *:nth-child(87) {
+  -ms-grid-row: 8;
+  -ms-grid-column: 10;
+}
+
+body > *:nth-child(88) {
+  -ms-grid-row: 8;
+  -ms-grid-column: 11;
+}
+
+body > *:nth-child(89) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 1;
+}
+
+body > *:nth-child(90) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 2;
+}
+
+body > *:nth-child(91) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 3;
+}
+
+body > *:nth-child(92) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 4;
+}
+
+body > *:nth-child(93) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 5;
+}
+
+body > *:nth-child(94) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 6;
+}
+
+body > *:nth-child(95) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 7;
+}
+
+body > *:nth-child(96) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 8;
+}
+
+body > *:nth-child(97) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 9;
+}
+
+body > *:nth-child(98) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 10;
+}
+
+body > *:nth-child(99) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 11;
+}
+
+body > *:nth-child(100) {
+  -ms-grid-row: 10;
+  -ms-grid-column: 1;
+}
+
+body > *:nth-child(101) {
+  -ms-grid-row: 10;
+  -ms-grid-column: 2;
+}
+
+body > *:nth-child(102) {
+  -ms-grid-row: 10;
+  -ms-grid-column: 3;
+}
+
+body > *:nth-child(103) {
+  -ms-grid-row: 10;
+  -ms-grid-column: 4;
+}
+
+body > *:nth-child(104) {
+  -ms-grid-row: 10;
+  -ms-grid-column: 5;
+}
+
+body > *:nth-child(105) {
+  -ms-grid-row: 10;
+  -ms-grid-column: 6;
+}
+
+body > *:nth-child(106) {
+  -ms-grid-row: 10;
+  -ms-grid-column: 7;
+}
+
+body > *:nth-child(107) {
+  -ms-grid-row: 10;
+  -ms-grid-column: 8;
+}
+
+body > *:nth-child(108) {
+  -ms-grid-row: 10;
+  -ms-grid-column: 9;
+}
+
+body > *:nth-child(109) {
+  -ms-grid-row: 10;
+  -ms-grid-column: 10;
+}
+
+body > *:nth-child(110) {
+  -ms-grid-row: 10;
+  -ms-grid-column: 11;
+}
+
+main {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  border-radius: var(--borderRadius);
+  grid-area: content;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr;
+  grid-template-rows: auto 1fr;
+  -ms-grid-row-align: center;
+  -ms-grid-column-align: center;
+  place-self: center;
+  width: 700px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+          box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  aspect-ratio: 2/1;
+  max-height: 90vh;
+  max-width: 90vw;
+}
+
+#clock > main {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+aside {
+  --listPad:40px;
+  border-radius: 0 0 var(--borderRadius) 0;
+  padding: 3%;
+  background-color: white;
+  grid-area: aside;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  transition: opacity 500ms;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr auto;
+  grid-template-columns: 1fr auto;
+      grid-template-areas: "head close" "list list";
+  -ms-grid-row-align: start;
+      align-self: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  visibility: hidden;
+}
+aside:target {
+  opacity: 1;
+  visibility: visible;
+}
+aside > ol {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: list;
+  padding-left: var(--listPad);
+}
+aside > ol li > span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: var(--gap);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+input[name=answer_option] {
+  display: none;
+}
+.text-link {
+  text-decoration: none;
+  color: black;
+  -webkit-transition: color 500ms;
+  transition: color 500ms;
+}
+.text-link:hover {
+  color: hsl(0deg, 0%, 25%);
+}
+
+.close:hover {
+  color: red;
+}
+
+#quiz-interface {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto var(--half-gap) 1fr var(--half-gap) auto var(--half-gap) auto;
+  grid-template-rows: auto 1fr repeat(2, auto);
+  place-items: center;
+  gap: var(--half-gap);
+}
+#quiz-interface > * {
+  font-family: "Exo 2";
+  line-height: 1.5;
+}
+#quiz-interface > span:first-child {
+  max-width: 500px;
+}
+
+#options {
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  gap: var(--half-gap);
+  -ms-grid-columns: minmax(40px, auto);
+  grid-template-columns: minmax(40px, auto);
+}
+
+#result {
+  --hue:120;
+  --saturation:100%;
+  --lightness:25%;
+  --colorOpacity:0.2;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  transition: opacity 500ms;
+  text-transform: capitalize;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  color: hsl(var(--hue), var(--saturation), var(--lightness));
+  -webkit-transform: skew(-20deg);
+          transform: skew(-20deg);
+  font-weight: 700;
+  background-color: hsla(var(--hue), var(--saturation), var(--lightness), var(--colorOpacity));
+  -ms-grid-row-align: stretch;
+  -ms-grid-column-align: stretch;
+  place-self: stretch;
+  text-align: center;
+}
+#result.show {
+  opacity: 1;
+}
+#result.incorrect {
+  --hue:0;
+  --saturation:100%;
+  --lightness:50%;
+}
+
+pre {
+  --hue:0;
+  --saturation:100%;
+  --lightness:50%;
+  color: hsl(var(--hue), var(--saturation), var(--lightness));
+  background-color: hsl(var(--hue), var(--saturation), 90%);
+  display: inline;
+  padding-inline: 0.2em;
+}
+
+.clock-container {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: clock;
+  --circleSize:2.5rem;
+  display: -ms-inline-grid;
+  display: inline-grid;
+      grid-template-areas: "content";
+  place-content: start;
+  -ms-grid-columns: var(--circleSize);
+  grid-template-columns: var(--circleSize);
+  -ms-grid-rows: var(--circleSize);
+  grid-template-rows: var(--circleSize);
+}
+.clock-container > * {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: content;
+}
+
+#clock {
+  --used:0;
+  --max:60;
+  --itemDeg:calc(var(--used) / var(--max) * 360deg);
+  --selectedColor:blue;
+  --trackSize:0.5rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  grid-area: "content";
+  border-radius: 50%;
+  width: var(--circleSize);
+  height: var(--circleSize);
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "content";
+  background: conic-gradient(var(--selectedColor) var(--itemDeg), transparent var(--itemDeg));
+}
+#clock:before {
+  content: "";
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: calc(100% - var(--trackSize));
+  height: calc(100% - var(--trackSize));
+  -ms-grid-row-align: center;
+  -ms-grid-column-align: center;
+  place-self: center;
+  border-radius: 50%;
+  background-color: var(--backColor);
+}
+
+#clock-span {
+  -ms-grid-row-align: center;
+  -ms-grid-column-align: center;
+  place-self: center;
+  font-size: 0.8rem;
+}

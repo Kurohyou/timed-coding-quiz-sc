@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Font and style links used for many Kurohyou Studios sites
+  Links:
+    Aldrich font
+    Exo 2 font
+    Material Icons
+    Social Icons created on icomoon
+    Social Icons stylesheet
+  -->
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="stylesheet" href="../portfolio/social-icons.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&amp;family=Exo+2:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="/assets/css/style.css"/>
+    <title>Code Quiz!</title>
+  </head>
+  <body>
+    <nav><a class="text-link" href="#leaderboard">Leaderboard</a></nav>
+    <div class="clock-container" style="display:none;">
+      <div id="clock"></div><span id="clock-span"></span>
+    </div>
+    <main>
+      <header>
+        <h1>Kurohyou's Code Quiz</h1>
+      </header>
+      <section aria-label="quiz prompts" id="quiz-interface"><span>Click below to start the quiz. You will have 1 minute to complete the quiz. Wrong answers will deduct 5 seconds from the timer.</span>
+        <div id="options"></div><span id="result"></span>
+        <button class="button button--start" disabled id="continue">Loading Quiz</button>
+      </section>
+    </main>
+    <aside id="leaderboard">
+      <h2>Leaderboard</h2><a class="close text-link material-icons" href="#">close</a>
+      <ol></ol>
+    </aside>
+    <!-- Allows parsing of csv file to JSON-->
+    <script src="assets/javascript/papaparse.min.js"></script>
+    <!-- Quiz javascript-->
+    <script src="assets/javascript/quiz.js"></script>
+  </body>
+</html>

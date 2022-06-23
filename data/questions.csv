@@ -1,0 +1,6 @@
+prompt,option-0,option-1,option-2,option-3,option-4,correctIndex
+"In javascript, what type of element is `typeOf`",operator,function,method,declaration,all of the above,0
+Which of these is NOT an operator,+,-,||,let,,3
+How would you define a constant,var thisIsAConstant = {};,const myConst = {};,let thisIsAConst = {};,function thisIsAConstant(){},,1
+What variable type does `{}` represent,array,string,number,object,,3
+Does javascript have an integer type,TRUE,FALSE,,,,1
